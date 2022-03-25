@@ -49,7 +49,7 @@ Create virtual host config file for training and add content with nano
 
 ```bash
   sudo nano /etc/apache2/sites-available/training.conf
-```
+  
 <VirtualHost *:80>
     ServerName training
     ServerAlias www.training
@@ -58,4 +58,5 @@ Create virtual host config file for training and add content with nano
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+```
 
