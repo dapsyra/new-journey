@@ -45,11 +45,11 @@ Create the directory to host training site and assign permissions
   sudo chown -R $USER:$USER /var/www/training
 ```
 
-Create virtual host config file for training and add content with nano
+Create virtualhost config file for training and add content with nano
 
 ```bash
   sudo nano /etc/apache2/sites-available/training.conf
-  
+
 <VirtualHost *:80>
     ServerName training
     ServerAlias www.training
@@ -59,4 +59,7 @@ Create virtual host config file for training and add content with nano
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+
+![virtualhost](http://cybronix.com.ng/devops/virtualhost.png)
+
 
