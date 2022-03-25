@@ -81,7 +81,8 @@ phpinfo();
 
 remove index.php
 ```bash
-  sudo rm /var/www/training/index.ph
-```
+  sudo rm /var/www/training/index.php
+  ```
+
 
 
