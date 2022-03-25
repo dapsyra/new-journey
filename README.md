@@ -78,5 +78,10 @@ phpinfo();
 ![php_working](http://cybronix.com.ng/devops/php_working.png)
 
 
+remove index.php
+
+```bash
+  sudo rm /var/www/training/index.ph
+```
 
 
