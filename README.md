@@ -59,7 +59,24 @@ Create virtualhost config file for training and add content with nano
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+Test virtualhost
 
 ![virtualhost](http://cybronix.com.ng/devops/virtualhost.png)
+
+Enable PHP and priotise index.php over index.html
+
+```bash
+  sudo vim /etc/apache2/mods-enabled/dir.conf
+
+  nano /var/www/training/index.php
+
+  <?php
+phpinfo();
+
+```
+
+![php_working](http://cybronix.com.ng/devops/php_working.png)
+
+
 
 
