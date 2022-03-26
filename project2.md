@@ -126,9 +126,23 @@ Launch site in web browser to test
 ![test_lemp](http://cybronix.com.ng/devops/test_lemp.png)
 
 
+Test PHP with Nginx
 
+create a test PHP file in working directory
 
+```bash
+    sudo nano /var/www/projectLEMP/info.php
+```
 
+add content to file and save
+```bash
+    <?php
+    phpinfo();
+```
 
-
+launch web browser to test
+```bash
+    http://`server_domain_or_IP`/info.php
+```
+![test_lemp](http://cybronix.com.ng/devops/nginx_php_working.png)
 
