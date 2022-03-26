@@ -110,6 +110,24 @@ Test config for error
 
 
 
+Disable default Nginx host and relaunch Nginx
+```bash
+    sudo unlink /etc/nginx/sites-enabled/default
+    sudo systemctl reload nginx
+```
+
+Nginx is now active.  Create an index file to test it
+```bash
+    sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
+```
+
+Launch site in web browser to test
+
+![test_lemp](http://cybronix.com.ng/devops/test_lemp.png)
+
+
+
+
 
 
 
