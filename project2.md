@@ -182,13 +182,66 @@ Login to mysql using project2 credentials
 ![test_mysql](http://cybronix.com.ng/devops/test_mysql.png)
 
 
+
+create a test table named todo_list from mysql console
+
 ```bash
     CREATE TABLE project2_db.todo_list (item_id INT AUTO_INCREMENT,content VARCHAR(255),PRIMARY KEY(item_id));
 
     INSERT INTO project2_db.todo_list (content) VALUES ("My first important item");
-
-    SELECT * FROM project2_db.todo_list;
+    INSERT INTO project2_db.todo_list (content) VALUES ("My second important item");
+    INSERT INTO project2_db.todo_list (content) VALUES ("My third important item");
+    INSERT INTO project2_db.todo_list (content) VALUES ("My other important items");
 ```
+confirm that the data was successfully saved to table and exit
+```bash
+    SELECT * FROM project2_db.todo_list;
+    exit
+```
+![test_mysql_2](http://cybronix.com.ng/devops/test_mysql_2.png)
+
+
+
+Create a PHP script that will connect to MySQL and query for your content
+
+```bash
+    nano /var/www/projectLEMP/todo_list.php
+```
+
+Add content to file and save
+```bash
+    <?php
+    $user = "project2";
+    $password = "password";
+    $database = "project2_db";
+    $table = "todo_list";
+
+    try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+    } catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+    }
+```
+Launch web browser to test
+```bash
+    http://ec2-3-144-137-190.us-east-2.compute.amazonaws.com/todo_list.php
+```
+
+![todo](http://cybronix.com.ng/devops/todo.png)
+
+
+
+
+
+
+
+
 
 
 
