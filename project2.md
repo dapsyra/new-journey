@@ -19,12 +19,13 @@ verify nginx
 ```
 ![ssh_gitbash](http://cybronix.com.ng/devops/nginx_dead.png)
 
-nginx not active because apache2 is using port 80
+nginx not active because apache2 is bind to port 80
 
 stop apache2 and start nginx
 ```bash
     sudo systemctl stop apache2
     sudo systemctl start nginx
+    sudo systemctl status nginx
 ```
 ![ssh_gitbash](http://cybronix.com.ng/devops/nginx_start.png)
 
