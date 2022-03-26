@@ -144,5 +144,5 @@ launch web browser to test
 ```bash
     http://`server_domain_or_IP`/info.php
 ```
-![test_lemp](http://cybronix.com.ng/devops/nginx_php_working.png)
+![test_nginx_php](http://cybronix.com.ng/devops/nginx_php_working.png)
 
