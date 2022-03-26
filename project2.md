@@ -146,3 +146,50 @@ launch web browser to test
 ```
 ![test_nginx_php](http://cybronix.com.ng/devops/nginx_php_working.png)
 
+Remove info.php file after testing for security purpose
+
+```bash
+     sudo rm /var/www/projectLEMP/info.php
+```
+
+
+Retrieving data from MySQL database with PHP
+
+connect to the MySQL console
+```bash
+    sudo mysql
+```
+create a new DB
+```bash
+    CREATE DATABASE `project2_db`;
+```
+create a new user (replace password as appropriate)
+```bash
+    CREATE USER 'project2'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+```
+
+Grant all permissions over project2_db to project2 and exit mysql
+```bash
+    GRANT ALL ON project2_db.* TO 'project2'@'%';
+    exit
+```
+
+Login to mysql using project2 credentials
+```bash
+    mysql -u project2 -p
+    SHOW DATABASES;
+```
+![test_mysql](http://cybronix.com.ng/devops/test_mysql.png)
+
+
+```bash
+    CREATE TABLE project2_db.todo_list (item_id INT AUTO_INCREMENT,content VARCHAR(255),PRIMARY KEY(item_id));
+
+    INSERT INTO project2_db.todo_list (content) VALUES ("My first important item");
+
+    SELECT * FROM project2_db.todo_list;
+```
+
+
+
+
