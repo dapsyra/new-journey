@@ -29,3 +29,88 @@ stop apache2 and start nginx
 ```
 ![ssh_gitbash](http://cybronix.com.ng/devops/nginx_start.png)
 
+Open http port in AWS firewall
+
+
+Install and secure mysql server
+
+```bash
+  sudo apt install mysql-server
+
+  sudo mysql_secure_installation
+
+  sudo mysql
+```
+
+![working_sql](http://cybronix.com.ng/devops/working_sql.png)
+
+
+Install PHP
+
+```bash
+    sudo apt install php-fpm php-mysql
+```
+
+![php_nginx](http://cybronix.com.ng/devops/php_nginx.png)
+
+
+Configure Nginx to Use PHP Processor
+
+create working directory and assign permissions
+
+```bash
+    sudo mkdir /var/www/projectLEMP
+    sudo chown -R $USER:$USER /var/www/projectLEMP
+```
+
+create a new configuration file in Nginx’s sites-available directory
+
+```bash
+    sudo nano /etc/nginx/sites-available/projectLEMP
+```
+
+paste bare-bone configuration and save file
+
+```bash
+    #/etc/nginx/sites-available/projectLEMP
+
+server {
+    listen 80;
+    server_name projectLEMP www.projectLEMP;
+    root /var/www/projectLEMP;
+
+    index index.html index.htm index.php;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+     }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+}
+```
+
+Activate configuration by linking to the config file from Nginx’s sites-enabled directory:
+```bash
+    sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
+```
+
+Test config for error
+```bash
+    sudo nginx -t
+```
+![test_nginx](http://cybronix.com.ng/devops/nginx_test.png)
+
+
+
+
+
+
+
