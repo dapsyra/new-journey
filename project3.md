@@ -100,25 +100,144 @@ Launch web browser to test
 ![test3](http://cybronix.com.ng/devops/test3.png)
 
 
+# Routes
 
+## There are three actions that our To-Do application needs to be able to do:
 
+1. Create a new task
 
+1. Display list of all tasks
 
+1. Delete a completed task
 
+## create a folder routes and decend into it
 
+```bash
+    mkdir routes
+    cd routes
+```
 
+## create a file api.js
+```bash
+    touch api.js
+```
+### Edit api.js file
+```bash
+    vim api.js
+```
 
+ ### Paste code:
+    
+```bash
+const express = require ('express');
+const router = express.Router();
 
-MongoDB Database
+router.get('/todos', (req, res, next) => {
 
-Signup for mLab
+});
+
+router.post('/todos', (req, res, next) => {
+
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+
+})
+
+module.exports = router;
+```
+
+## Install mongoose to make working with mongodb easier
+```bash
+    npm install mongoose 
+    mkdir models
+    cd models
+```
+## Create a file and name it todo.js Inside the models folder
+
+```bash
+    touch todo.js
+```
+## Edit file and paste code
+```bash
+     nano todo.js
+```
+## Paste code
+```bash
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//create schema for todo
+const TodoSchema = new Schema({
+action: {
+type: String,
+required: [true, 'The todo text field is required']
+}
+})
+
+//create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+
+module.exports = Todo;
+```
+## Now update the routes from the file api.js in ‘routes’ directory to make use of the new model.  In Routes directory, open api.js with vim api.js, delete the code inside with :%d command and paste there code below into it then save and exit
+
+```bash
+    vim api.js
+```
+## Paste code
+
+```bash
+const express = require ('express');
+const router = express.Router();
+const Todo = require('../models/todo');
+
+router.get('/todos', (req, res, next) => {
+
+//this will return all the data, exposing only the id and action field to the client
+Todo.find({}, 'action')
+.then(data => res.json(data))
+.catch(next)
+});
+
+router.post('/todos', (req, res, next) => {
+if(req.body.action){
+Todo.create(req.body)
+.then(data => res.json(data))
+.catch(next)
+}else {
+res.json({
+error: "The input field is empty"
+})
+}
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+Todo.findOneAndDelete({"_id": req.params.id})
+.then(data => res.json(data))
+.catch(next)
+})
+
+module.exports = router;
+```
+
+# MongoDB Database
+
+## Signup for mLab
 ```bash
     https://www.mongodb.com/atlas-signup-from-mlab
+```
+
+## Create a file in your Todo directory and name it .env
+```bash
+    touch .env && vi .env
 ```
 
 
 
 
+
+mongodb+srv://mongouser:3Y05rsVA89ZgG9az@cluster0.x52gw.mongodb.net/TodoDB?retryWrites=true&w=majority
 
 
 
