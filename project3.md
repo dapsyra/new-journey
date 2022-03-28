@@ -233,11 +233,69 @@ module.exports = router;
     touch .env && vi .env
 ```
 
+## Add the connection string to access the database in it, just as below: (Ensure to update <username>, <password>, <network-address> and <database> according to your setup)
+
+```bash
+    DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority'
+```
+## update the index.js to reflect the use of .env so that Node.js can connect to the database
+
+```bash
+    cd /home/ubuntu/Todo
+    vi index.js
+```
+
+## Replace content of file with the code below
+```bash
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+//connect to the database
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log(`Database connected successfully`))
+.catch(err => console.log(err));
+
+//since mongoose promise is depreciated, we overide it with node's promise
+mongoose.Promise = global.Promise;
+
+app.use((req, res, next) => {
+res.header("Access-Control-Allow-Origin", "\*");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+next();
+});
+
+app.use(bodyParser.json());
+
+app.use('/api', routes);
+
+app.use((err, req, res, next) => {
+console.log(err);
+next();
+});
+
+app.listen(port, () => {
+console.log(`Server running on port ${port}`)
+});
+```
+## Start the server
+```bash
+    node index.js
+```
+![start1](http://cybronix.com.ng/devops/start1.png)
+
+# Testing Backend Code without Frontend using RESTful API
 
 
 
 
-mongodb+srv://mongouser:3Y05rsVA89ZgG9az@cluster0.x52gw.mongodb.net/TodoDB?retryWrites=true&w=majority
 
 
 
