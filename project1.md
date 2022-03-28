@@ -1,22 +1,26 @@
 
-# new-journey
-My DevOps Training Projects
+# New-journey
+# My DevOps Training Projects
 
-Project 1
+# Project 1
 
-Create a new AWS account for the course
+## Create a new AWS account for the course
+
+```bash
+  https://aws.amazon.com/console/ 
+```
 
 ![new_AWS_account](http://cybronix.com.ng/devops/aws-account.jpg)
 
-Install Apache 2
+## Install Apache 2
 ```bash
   sudo apt install apache2
 ```
 
-Open http and https ports in AWS firewall
+## Open http and https ports in AWS firewall
 
 
-Install and secure mysql server
+## Install and secure mysql server
 ```bash
   sudo apt install mysql-server
 
@@ -28,7 +32,7 @@ Install and secure mysql server
 ![working_sql](http://cybronix.com.ng/devops/working_sql.png)
 
 
-Install PHP and related packages
+## Install PHP and related packages
 
 ```bash
   sudo apt install php libapache2-mod-php php-mysql
@@ -38,7 +42,7 @@ Install PHP and related packages
 
 
 
-Create the directory to host training site and assign permissions
+## Create the directory to host training site and assign permissions
 
 ```bash
   sudo mkdir /var/www/training
@@ -46,7 +50,7 @@ Create the directory to host training site and assign permissions
   sudo chown -R $USER:$USER /var/www/training
 ```
 
-Create virtualhost config file for training and add content with nano
+## Create virtualhost config file for training and add content with nano
 
 ```bash
   sudo nano /etc/apache2/sites-available/training.conf
@@ -60,27 +64,29 @@ Create virtualhost config file for training and add content with nano
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
-Test virtualhost
+## Test virtualhost
 
 ![virtualhost](http://cybronix.com.ng/devops/virtualhost.png)
 
-Enable PHP and priotise index.php over index.html
+## Enable PHP and priotise index.php over index.html
 
 ```bash
   sudo vim /etc/apache2/mods-enabled/dir.conf
-
+```
+## Create index.php to test web server
+```bash
   nano /var/www/training/index.php
-
-  <?php
+```
+### paste code
+```bash
+<?php
 phpinfo();
-
 ```
 
 ![php_working](http://cybronix.com.ng/devops/php_working.png)
 
 
-
-remove index.php
+## remove index.php
 ```bash
   sudo rm /var/www/training/index.php
   ```
