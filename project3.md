@@ -190,7 +190,7 @@ module.exports = Todo;
 ```bash
 const express = require ('express');
 const router = express.Router();
-const Todo = require('../models/todo');
+const Todo = require('/home/ubuntu/Todo/routes/models/todo');
 
 router.get('/todos', (req, res, next) => {
 
