@@ -1,19 +1,19 @@
-Implement a web solution based on MERN stack in AWS Cloud
+# Implement a web solution based on MERN stack in AWS Cloud
 
-Update and upgarde Ubuntu
+## Update and upgarde Ubuntu
 
 ```bash
     sudo apt update
     sudo apt upgrade
 ```
 
-Fetch and install NodeSourse Node.js 12.x repository 
+## Fetch and install NodeSourse Node.js 12.x repository 
 
 ```bash
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 ```
 
-Install Node.js and verify
+## Install Node.js and verify
 ```bash
     sudo apt-get install -y nodejs
     node -v
@@ -21,11 +21,11 @@ Install Node.js and verify
 ```
 ![nodejs_install](http://cybronix.com.ng/devops/nodejs1.png)
 
-Create a directory for the Todo project
+## Create a directory for the Todo project
 ```bash
     mkdir Todo
 ```
-Verify existence of Todo directory
+## Verify existence of Todo directory
 ```bash
     ls -lih
 ```
@@ -34,13 +34,13 @@ Verify existence of Todo directory
 ```bash
     cd Todo
 ```
-Initialise project to create a new package.json file.  Follow the prompt
+## Initialise project to create a new package.json file.  Follow the prompt
 ```bash
     npm init
 ```
 
 
-Install ExpressJS and confirm
+## Install ExpressJS and confirm
 
 ```bash
     npm install express
@@ -48,12 +48,12 @@ Install ExpressJS and confirm
 ```
 ![todo2](http://cybronix.com.ng/devops/todo2.png)
 
-Install dotenv
+## Install dotenv
 
 ```bash
     npm install dotenv
 ```
-Edit index.js and add codes
+## Edit index.js and add codes
 ```bash
     nano index.js
 ```
@@ -83,17 +83,17 @@ console.log(`Server running on port ${port}`)
 ```
 ![codes1](http://cybronix.com.ng/devops/codes1.png)
 
-Test server
+## Test server
 ```bash
     node index.js
 ```
 ![server-test](http://cybronix.com.ng/devops/server-test.png)
 
-Open port TCP/5000 in AWS instance to allow access to MERN server
+### Open port TCP/5000 in AWS instance to allow access to MERN server
 
 ![port5000](http://cybronix.com.ng/devops/port5000.png)
 
-Launch web browser to test
+## Launch web browser to test
 ```bash
     http://<PublicIP-or-PublicDNS>:5000
 ```
