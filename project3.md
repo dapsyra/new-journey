@@ -330,11 +330,83 @@ console.log(`Server running on port ${port}`)
     cd ~/Todo
     npx create-react-app client
 ```
+## Running a React App
+### install dependencies
+```bash
+    npm install concurrently --save-dev && npm install nodemon --save-dev
+```
 
+## Edit package.json in the Todo folder and replace highlighted part with the code below
 
+```bash
+    "scripts": {
+"start": "node index.js",
+"start-watch": "nodemon index.js",
+"dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+},
+```
+![replace1](http://cybronix.com.ng/devops/replace1.png)
 
+### Configure Proxy in package.json by adding the key value pair in the package.json file "proxy": "http://localhost:5000".
+```bash
+        cd client
+        nano package.json
+```
+### add
+```bash
+    "proxy": "http://localhost:5000"
+```
+## Goto Todo directory and simply do:
+```bash
+    cd ~/Todo
+    npm run dev
+```
+### Your app should open and start running on localhost:5000
 
+![success1](http://cybronix.com.ng/devops/success1.png)
+### Important note: In order to be able to access the application from the Internet you have to open TCP port 5000 on EC2
 
+## Creating your React Components
+### One of the advantages of react is that it makes use of components, which are reusable and also makes code modular. For our Todo app, there will be two stateful components and one stateless component.
+### From your Todo directory run:
+```bash
+    cd client
+    mkdir src
+```
+### move to the src directory
+```bash
+    cd src
+```
+### Inside your src folder create another folder called components
 
+```bash
+    mkdir components
+```
+### Move into the components directory with
 
+```bash
+    cd components
+```
+### Inside ‘components’ directory create three files Input.js, ListTodo.js and Todo.js.
+```bash
+    touch Input.js ListTodo.js Todo.js
+```
+### Open Input.js file
+```bash
+    vi Input.js
+```
+### To make use of Axios, which is a Promise based HTTP client for the browser and node.js, you need to cd into your client from your terminal and run yarn add axios or npm install axios.
 
+### Move to the src folder
+```bash
+    cd ..
+```
+### Move to clients folder
+```bash
+    cd ..
+```
+### Install Axios
+```bash
+    npm install axios
+```
+### 
