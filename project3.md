@@ -293,7 +293,43 @@ console.log(`Server running on port ${port}`)
 
 # Testing Backend Code without Frontend using RESTful API
 
-## 
+## In this project, we will use [Postman](https://www.getpostman.com/) to test our API.
+### Click [Install Postman](https://www.getpostman.com/downloads/) to download and install postman on your machine.
+
+### You should test all the API endpoints and make sure they are working. For the endpoints that require body, you should send JSON back with the necessary fields since it’s what we setup in our code.
+
+### Now open your Postman, create a POST request to the API http://PublicIP-or-PublicDNS:5000/api/todos. This request sends a new task to our To-Do list so the application could store it in the database.
+
+### Note: make sure your set header key Content-Type as application/json
+
+![postman1](http://cybronix.com.ng/devops/postman1.png)
+
+![postman2](http://cybronix.com.ng/devops/postman2.png)
+
+### Create a GET request to your API on http://PublicIP-or-PublicDNS:5000/api/todos. This request retrieves all existing records from our To-do application (backend requests these records from the database and sends it us back as a response to GET request).
+
+![postman3](http://cybronix.com.ng/devops/postman3.png)
+
+
+### Create a DELETE request to your API on http://PublicIP-or-PublicDNS:5000/api/todos/task-id. This request delete the task from our To-do application
+
+![postman4](http://cybronix.com.ng/devops/postman4.png)
+
+# FRONTEND CREATION
+
+## Since we are done with the functionality we want from our backend and API, it is time to create a user interface for a Web client (browser) to interact with the application via API. To start out with the frontend of the To-do app, we will use the create-react-app command to scaffold our app.
+
+## NOTE:  create-react-app requires node 14 or higher.  Upgrade nodejs to version 14
+
+```bash
+    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+```
+## now install create-react-app
+```bash
+    cd ~/Todo
+    npx create-react-app client
+```
 
 
 
